@@ -38,10 +38,10 @@ class Petstore_api():
             "name": "Garfield",
             "photoUrls": ["ullamco cupidatat enim cillum consectetur",
                           "exercitation aute magna deserunt"],
-            "id": pet_id, "category": {"id": -75971216, "name": "cat"},
+            "id": pet_id, "category": {"id": -75971216, "name": "dog"},
             "tags": [{"id": 60895543, "name": "dolor aliqua pariatur"},
                      {"id": -31720605, "name": "velit reprehe"}],
-            "status": "available"
+            "status": "pending"
         }
 
         put_url = base_url + put_resource

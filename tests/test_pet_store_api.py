@@ -12,36 +12,35 @@ class Test_add_pet():
         print("Метод POST")
         Checking.check_status_code(self.result_post, 200)
         Checking.check_required_fields(self.result_post, ['id', 'category', 'name', 'photoUrls', 'tags', 'status'])
-        # assert self.check_post["name"] == "Charlie"
 
         print("Метод GET POST")
         result_get: Response = Petstore_api.get_new_pet(self.pet_id)
         check_get = result_get.json()
         Checking.check_status_code(result_get, 200)
-        # assert result_get.status_code == 200
-        # assert check_get["id"] == self.pet_id
+        Checking.check_json_value(result_get, "name", "Charlie")
+        Checking.check_json_value(result_get, "id", self.pet_id)
 
-    # def test_update_new_pet(self):
-    #     print("Метод PUT")
-    #     result_put: Response = Petstore_api.put_new_pet(self.pet_id)
-    #     check_put = result_put.json()
-    #     assert result_put.status_code == 200
-    #     assert check_put["name"] == "Garfield"
-    #     assert check_put["category"]["name"] == "cat"
-    #
-    #     print("Метод GET PUT")
-    #     result_get: Response = Petstore_api.get_new_pet(self.pet_id)
-    #     check_get = result_get.json()
-    #     assert result_get.status_code == 200
-    #     assert check_get["name"] == check_put["name"]
-    #     assert check_get["category"]["name"] == check_put["category"]["name"]
-    #
-    # def test_delete_new_pet(self):
-    #     print("Метод DELETE")
-    #     result_delete: Response = Petstore_api.delete_new_pet(self.pet_id)
-    #     check_delete = result_delete.json()
-    #     assert result_delete.status_code == 200
-    #     assert check_delete["type"] == "unknown"
+    def test_update_new_pet(self):
+        print("Метод PUT")
+        result_put: Response = Petstore_api.put_new_pet(self.pet_id)
+        check_put = result_put.json()
+        Checking.check_status_code(result_put, 200)
+        Checking.check_required_fields(result_put, ['id', 'category', 'name', 'photoUrls', 'tags', 'status'])
+
+        print("Метод GET PUT")
+        result_get: Response = Petstore_api.get_new_pet(self.pet_id)
+        check_get = result_get.json()
+        Checking.check_status_code(result_get, 200)
+        Checking.check_json_value(result_get, "name", "Garfield")
+        Checking.check_json_value(result_get, "status", "pending")
+
+    def test_delete_new_pet(self):
+        print("Метод DELETE")
+        result_delete: Response = Petstore_api.delete_new_pet(self.pet_id)
+        check_delete = result_delete.json()
+        Checking.check_status_code(result_delete, 200)
+        # assert result_delete.status_code == 200
+        # assert check_delete["type"] == "unknown"
     #
     #     print("Метод GET DELETE")
     #     result_get: Response = Petstore_api.get_new_pet(self.pet_id)

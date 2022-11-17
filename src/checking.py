@@ -22,4 +22,4 @@ class Checking():
         check = response.json()
         check_info = check.get(field_name)
         assert check_info == expected_value
-        print(field_name + "Верен!!!")
+        print(field_name + " питомца Верен!")
