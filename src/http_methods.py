@@ -1,23 +1,28 @@
 import requests
+import allure
 
 class Http_methods:
 
     @staticmethod
     def get(url):
-        result = requests.get(url)
-        return result
+        with allure.step("GET"):
+            result = requests.get(url)
+            return result
 
     @staticmethod
     def post(url, body):
-        result = requests.post(url, json=body)
-        return result
+        with allure.step("POST"):
+            result = requests.post(url, json=body)
+            return result
 
     @staticmethod
     def put(url, body):
-        result = requests.put(url, json=body)
-        return result
+        with allure.step("PUT"):
+            result = requests.put(url, json=body)
+            return result
 
     @staticmethod
     def delete(url):
-        result = requests.delete(url)
-        return result
+        with allure.step("DELETE"):
+            result = requests.delete(url)
+            return result

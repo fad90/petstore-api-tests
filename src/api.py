@@ -1,5 +1,6 @@
 from src.http_methods import Http_methods
 
+
 base_url = "https://petstore.swagger.io/v2"
 
 
